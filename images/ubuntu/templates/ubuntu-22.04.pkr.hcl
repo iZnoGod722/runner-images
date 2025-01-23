@@ -151,7 +151,7 @@ source "azure-arm" "build_image" {
   client_secret                          = "${var.client_secret}"
   image_offer                            = "0001-com-ubuntu-server-jammy"
   image_publisher                        = "canonical"
-  image_sku                              = "22_04-lts-ARM"
+  image_sku                              = "22_04-lts-arm64"
   location                               = "${var.location}"
   managed_image_name                     = "${local.managed_image_name}"
   managed_image_resource_group_name      = "${var.managed_image_resource_group_name}"
