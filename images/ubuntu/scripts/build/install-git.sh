@@ -23,23 +23,26 @@ EOF
 # Install git-ftp
 apt-get install git-ftp
 
-echo "Before removal: "
-cat /etc/apt/sources.list
-ls /etc/apt/sources.list.d/
+echo "About to remove source repo.."
 
 # Remove source repo's
 add-apt-repository --remove $GIT_REPO
 
-echo "Exit code: $?"
-echo "After removal:"
-cat /etc/apt/sources.list
-ls /etc/apt/sources.list.d/
+echo "Removed source repo"
+
+echo "About to document apt source repo..."
 
 # Document apt source repo's
 echo "git-core $GIT_REPO" >> $HELPER_SCRIPTS/apt-sources.txt
 
+echo "Documented apt source repo"
+
+echo "About to add well-known SSH host keys to known_hosts..."
+
 # Add well-known SSH host keys to known_hosts
 ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> /etc/ssh/ssh_known_hosts
 ssh-keyscan -t rsa ssh.dev.azure.com >> /etc/ssh/ssh_known_hosts
+
+echo "Added well-known SSH host keys to known_hosts"
 
 invoke_tests "Tools" "Git"
