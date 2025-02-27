@@ -23,8 +23,17 @@ EOF
 # Install git-ftp
 apt-get install git-ftp
 
+echo "Before removal: "
+cat /etc/apt/sources.list
+ls /etc/apt/sources.list.d/
+
 # Remove source repo's
-add-apt-repository --remove -v $GIT_REPO
+add-apt-repository --remove $GIT_REPO
+
+echo "Exit code: $?"
+echo "After removal:"
+cat /etc/apt/sources.list
+ls /etc/apt/sources.list.d/
 
 # Document apt source repo's
 echo "git-core $GIT_REPO" >> $HELPER_SCRIPTS/apt-sources.txt
