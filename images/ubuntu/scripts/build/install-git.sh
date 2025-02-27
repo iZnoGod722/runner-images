@@ -24,6 +24,7 @@ EOF
 apt-get install git-ftp
 
 # Remove source repo's
+add-apt-repository --remove -v $GIT_REPO
 
 # Document apt source repo's
 echo "git-core $GIT_REPO" >> $HELPER_SCRIPTS/apt-sources.txt
